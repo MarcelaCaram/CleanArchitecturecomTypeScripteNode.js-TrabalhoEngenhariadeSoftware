@@ -138,7 +138,7 @@ Crie um arquivo `tsconfig.json` na raiz do projeto e adicione as seguintes confi
 
 ####  Implementando as Camadas da Clean Architecture
 
-#####  Entidades
+#####  - Entidades
 
 Crie uma pasta chamada `entities` e adicione um arquivo `User.ts`:
 
@@ -148,7 +148,7 @@ export class User {
 }
 ```
 
-##### Casos de Uso
+##### - Casos de Uso
 
 Crie uma pasta chamada `useCases` e adicione um arquivo `UserUseCase.ts`:
 
@@ -168,7 +168,7 @@ export class UserUseCase {
 }
 ```
 
-##### Controladores
+##### - Controladores
 
 Crie uma pasta chamada `controllers` e adicione um arquivo `UserController.ts`:
 
