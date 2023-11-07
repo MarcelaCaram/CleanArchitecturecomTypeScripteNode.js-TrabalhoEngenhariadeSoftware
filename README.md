@@ -26,11 +26,11 @@
 ## Como fazer uma Clean Architecture com TypeScript e Node.js?
   Ao combinar os princípios da Clean Architecture com as capacidades de tipagem estática do TypeScript e a versatilidade do ambiente de execução do Node.js, os desenvolvedores podem criar aplicativos escaláveis e de alta qualidade. Essa abordagem pode ser feita por meio do cumprimento dos seguintes tópicos chaves:
 
-- Entidades: Defina objetos de negócios centrais, como 'Usuário', 'Produto', 'Pedido', etc.
-- Casos de Uso (Use Cases): Desenvolva métodos principais, como 'Criar Usuário', 'Atualizar Produto', 'Processar Pedido', etc.
-- Interfaces de Controlador: Crie interfaces de controlador para traduzir solicitações HTTP em chamadas de casos de uso, como 'UserController', 'ProductController', etc.
-- Camada de Aplicativo: Implemente a lógica intermediária que coordena interações entre entidades e casos de uso.
-- Camada de Infraestrutura: Gerencie conexões com bibliotecas externas, bancos de dados e serviços de terceiros, como repositórios e adaptadores de banco de dados.
+- `Entidades`: Defina objetos de negócios centrais, como 'Usuário', 'Produto', 'Pedido', etc.
+- `Casos de Uso` (Use Cases): Desenvolva métodos principais, como 'Criar Usuário', 'Atualizar Produto', 'Processar Pedido', etc.
+- `Interfaces de Controlador`: Crie interfaces de controlador para traduzir solicitações HTTP em chamadas de casos de uso, como 'UserController', 'ProductController', etc.
+- `Camada de Aplicativo`: Implemente a lógica intermediária que coordena interações entre entidades e casos de uso.
+- `Camada de Infraestrutura`: Gerencie conexões com bibliotecas externas, bancos de dados e serviços de terceiros, como repositórios e adaptadores de banco de dados.
 
 ## Instalação das ferramentas
   Para este tutorial, será necessária a instalação do Node.js e do Typescript.
