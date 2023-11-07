@@ -120,6 +120,8 @@ Depois, instale as dependências necessárias (Inversify, inversify-express-util
 ```bash
 npm install inversify inversify-express-utils express reflect-metadata
 npm install @types/express --save-dev
+npm install typescript ts-node --save-dev
+npm install
 ```
 
 ####  Configurando o TypeScript
@@ -225,8 +227,13 @@ server.build().listen(3000, () => {
   console.log("Servidor iniciado em http://localhost:3000");
 });
 ```
+#### Executando o projeto
 
-
+Para executar o projeto, utilize os seguintes comandos:
+```shellscript
+npm install typescript ts-node --save-dev
+npm install
+```
 
 
 
