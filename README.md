@@ -1,0 +1,1 @@
+# CleanArchitecturecomTypeScripteNode.js-TrabalhoEngenhariadeSoftware
