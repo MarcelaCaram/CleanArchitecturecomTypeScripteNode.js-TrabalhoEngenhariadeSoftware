@@ -19,4 +19,79 @@
 
   A Clean Architecture promove a separação de responsabilidades em um sistema, dividindo-o em várias camadas ou níveis, conforme pode ser observado na imagem abaixo. Dentre as camadas representadas estão: entidades (classes comuns a vários sistemas), casos de uso (regras de negócio específicas do sistema), adaptadores (viabilizam a comunicação entre as camadas internas e a camada externa) e frameworks externos (bibliotecas, frameworks e sistemas externos).
 
-## 
+<div align="center">
+    <img src="cleanArch.png">
+</div>
+
+## Como fazer uma Clean Architecture com TypeScript e Node.js?
+  Ao combinar os princípios da Clean Architecture com as capacidades de tipagem estática do TypeScript e a versatilidade do ambiente de execução do Node.js, os desenvolvedores podem criar aplicativos escaláveis e de alta qualidade. Essa abordagem pode ser feita por meio do cumprimento dos seguintes tópicos chaves:
+
+- Entidades: Defina objetos de negócios centrais, como 'Usuário', 'Produto', 'Pedido', etc.
+- Casos de Uso (Use Cases): Desenvolva métodos principais, como 'Criar Usuário', 'Atualizar Produto', 'Processar Pedido', etc.
+- Interfaces de Controlador: Crie interfaces de controlador para traduzir solicitações HTTP em chamadas de casos de uso, como 'UserController', 'ProductController', etc.
+- Camada de Aplicativo: Implemente a lógica intermediária que coordena interações entre entidades e casos de uso.
+- Camada de Infraestrutura: Gerencie conexões com bibliotecas externas, bancos de dados e serviços de terceiros, como repositórios e adaptadores de banco de dados.
+
+## Instalação das ferramentas
+  Para este tutorial, será necessária a instalação do Node.js e do Typescript.
+
+#### Instalação do Node.js
+```shellscript
+curl -sL https://deb.nodesource.com/setup\_13.x | sudo -E bash -
+```  
+```shellscript
+sudo apt install nodejs
+``` 
+#### Verificando a versão instalada
+```shellscript
+node --version
+```
+
+#### Iniciando uma aplicação
+```shellscript
+mkdir nodeapp 
+```
+
+```shellscript
+cd nodeapp  
+``` 
+
+```shellscript
+npm init
+```
+
+### Instalação do Typescript
+  Após a instalação do NodeJs vamos criar um projeto chamado **ts** e aplicar o comando no terminal dentro do diretório do projeto
+```shellscript
+npm init
+```
+Este comando criará o arquivo **package.json**, que será útil posteriormente. Aperte enter para pular todas as perguntas que surgirão após o comando.
+
+#### Para instalar o TypeScript, basta aplicar o comando:
+```shellscript
+npm install typescript
+```
+  Perceba que o arquivo **package.json** já exibe o pacote do TypeScript como dependência.
+  Agora vamos iniciar as configurações do TypeScript. Primeiro, aplique o comando:
+
+```shellscript
+npx tsc --init
+```
+Este comando irá gerar o arquivo **tsconfig.json**, que será responsável pelas configurações do TypeScript.
+Neste arquivo, devemos alterar o parâmetro **"modules": "commonjs"** para **"modules": "ESNext"**, aqui estamos avisando ao TypeScript para usar o padrão do EcmaScript mais atual. Também vamos deixar ativado o parâmetro **"outDir": "./dist"**, que será o diretório onde o TypeScript irá gerar o código JavaScript, lembrando que o TypeScript gera um código JavaScript.
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
