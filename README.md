@@ -88,8 +88,142 @@ let nome: string = 'Vinicius';
 
 console.log(`nome: ${nome}, idade: ${idade}`);
 ```
+  TypeScript nesse momento, a ideia neste exemplo é verificar se nosso ambiente está ok, para isso vamos executar o seguinte comando:
+```shellscript
+npx tsc
+```
+  Podemos testar e executar o código JavaScript gerado, vamos usar o comando:
+```shellscript
+node ./dist/teste.js
+```
+Caso esteja correto, o resultado do comando acima deve ser:
+```shellscript
+nome: Vinicius, idade: 20
+```
+### Criando um código Clean Architecture com TypeScript e Node.js
+  Primeiramente, vamos criar um novo projeto Node.js e inicializar o npm:
+  
+```bash
+mkdir clean-architecture-demo
+cd clean-architecture-demo
+npm init -y
+```
 
+#### Instalando Dependências
 
+Depois, instale as dependências necessárias (Inversify, inversify-express-utils e Express):
+
+```bash
+npm install inversify inversify-express-utils express reflect-metadata
+npm install @types/express --save-dev
+```
+
+####  Configurando o TypeScript
+
+Crie um arquivo `tsconfig.json` na raiz do projeto e adicione as seguintes configurações:
+
+```json
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}
+```
+
+####  Implementando as Camadas da Clean Architecture
+
+#####  Entidades
+
+Crie uma pasta chamada `entities` e adicione um arquivo `User.ts`:
+
+```typescript
+export class User {
+  constructor(public id: number, public name: string, public email: string) {}
+}
+```
+
+##### Casos de Uso
+
+Crie uma pasta chamada `useCases` e adicione um arquivo `UserUseCase.ts`:
+
+```typescript
+import { injectable } from "inversify";
+import { User } from "../entities/User";
+
+@injectable()
+export class UserUseCase {
+  getUsers(): User[] {
+    // Dados simulados para fins de demonstração
+    return [
+      new User(1, "John Doe", "john@example.com"),
+      new User(2, "Jane Smith", "jane@example.com"),
+    ];
+  }
+}
+```
+
+##### Controladores
+
+Crie uma pasta chamada `controllers` e adicione um arquivo `UserController.ts`:
+
+```typescript
+import { Request, Response } from "express";
+import { controller, httpGet } from "inversify-express-utils";
+import { UserUseCase } from "../useCases/UserUseCase";
+import { inject } from "inversify";
+
+@controller("/users")
+export class UserController {
+  constructor(@inject(UserUseCase) private userUseCase: UserUseCase) {}
+
+  @httpGet("/")
+  async getUsers(_: Request, res: Response) {
+    const users = this.userUseCase.getUsers();
+    return res.json(users);
+  }
+}
+```
+
+#### Configurando o Contêiner Inversify
+
+Crie um arquivo chamado `inversify.config.ts`:
+
+```typescript
+import { Container } from "inversify";
+import { UserController } from "./controllers/UserController";
+import { UserUseCase } from "./useCases/UserUseCase";
+
+const container = new Container();
+container.bind<UserController>(UserController).toSelf();
+container.bind<UserUseCase>(UserUseCase).toSelf();
+
+export default container;
+```
+
+#### Configurando o Servidor Express
+
+Crie um arquivo chamado `app.ts`:
+
+```typescript
+import "reflect-metadata";
+import { InversifyExpressServer } from "inversify-express-utils";
+import container from "./inversify.config";
+
+const server = new InversifyExpressServer(container);
+
+server.build().listen(3000, () => {
+  console.log("Servidor iniciado em http://localhost:3000");
+});
+```
+```
+
+Com esta formatação, você pode facilmente copiar e colar o código em um arquivo `.txt` e fazer o upload para o GitHub. Se precisar de mais alguma coisa, estou à disposição para ajudar.
 
 
 
