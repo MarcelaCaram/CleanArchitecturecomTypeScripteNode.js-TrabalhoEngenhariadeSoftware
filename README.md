@@ -80,7 +80,15 @@ npx tsc --init
 Este comando irá gerar o arquivo **tsconfig.json**, que será responsável pelas configurações do TypeScript.
 Neste arquivo, devemos alterar o parâmetro **"modules": "commonjs"** para **"modules": "ESNext"**, aqui estamos avisando ao TypeScript para usar o padrão do EcmaScript mais atual. Também vamos deixar ativado o parâmetro **"outDir": "./dist"**, que será o diretório onde o TypeScript irá gerar o código JavaScript, lembrando que o TypeScript gera um código JavaScript.
 
-  
+### Criando primeiro código em TypeScript
+  Para testar a instalação acima, vamos criar um arquivo teste.ts na raiz de nosso projeto com seguinte código:
+```typescript
+let idade: number = 20;
+let nome: string = 'Vinicius';
+
+console.log(`nome: ${nome}, idade: ${idade}`);
+```
+
 
 
 
