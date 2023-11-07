@@ -221,10 +221,6 @@ server.build().listen(3000, () => {
   console.log("Servidor iniciado em http://localhost:3000");
 });
 ```
-```
-
-Com esta formatação, você pode facilmente copiar e colar o código em um arquivo `.txt` e fazer o upload para o GitHub. Se precisar de mais alguma coisa, estou à disposição para ajudar.
-
 
 
 
