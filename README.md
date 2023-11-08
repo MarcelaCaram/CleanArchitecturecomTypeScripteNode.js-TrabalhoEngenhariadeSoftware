@@ -288,7 +288,7 @@ http://localhost:3000/users/
 
 #### Resultado
 
-Deve ser exibida, no localhost, a seguinte lista de tarefas a fazer
+Deve ser exibida, no localhost, a seguinte lista de tarefas a fazer:
 ![image](https://github.com/MarcelaCaram/CleanArchitecturecomTypeScripteNode.js-TrabalhoEngenhariadeSoftware/assets/81043748/c6c0a3a7-3c3f-4fe9-9865-fa643fe3e72d)
 
 
