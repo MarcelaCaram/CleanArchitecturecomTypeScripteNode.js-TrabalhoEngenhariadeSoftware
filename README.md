@@ -278,13 +278,13 @@ server.build().listen(3000, () => {
 Para executar o projeto, utilize os seguintes comandos:
 ```shellscript
 npx tsc
-node ./dist/app.js
+node ./dist/tasks.js
 ```
 
 #### Abrindo o localhost
 
 Para acessar o resultado, acesse na url de seu navegador:
-http://localhost:3000/users/
+http://localhost:3000/tasks/
 
 #### Resultado
 
