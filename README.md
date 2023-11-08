@@ -137,56 +137,108 @@ Crie um arquivo `tsconfig.json` na raiz do projeto e adicione as seguintes confi
 
 ####  Implementando as Camadas da Clean Architecture
 
+Como exemplo de aplicação usando Clean Architecture, será criada uma lista de tarefas a fazer (task list)
+
 #####  - Entidades
 
-Crie uma pasta chamada `entities` e adicione um arquivo `User.ts`:
+Crie uma pasta chamada `entities` e adicione um arquivo `Task.ts`:
 
 ```typescript
-export class User {
-  constructor(public id: number, public name: string, public email: string) {}
+export class Task {
+    constructor(public id: number, public description: string, public status: string) {}
 }
 ```
 
 ##### - Casos de Uso
 
-Crie uma pasta chamada `useCases` e adicione um arquivo `UserUseCase.ts`:
+Crie uma pasta chamada `useCases` e adicione um arquivo `TaskListUseCase.ts`:
 
 ```typescript
-import { injectable } from "inversify";
-import { User } from "../entities/User";
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TaskListUseCase = void 0;
+const inversify_1 = require("inversify");
+const Task_1 = require("../entities/Task");
+let TaskListUseCase = class TaskListUseCase {
+    getTasks() {
+        return [
+            new Task_1.Task(1, "Doing the dishes", "Done"),
+            new Task_1.Task(2, "Laying the", "Done"),
+            new Task_1.Task(3, "Cleaning the bathroom", "Undone"),
+            new Task_1.Task(4, "Cooking dinner", "Undone"),
+            new Task_1.Task(5, "Ironing clothes", "Undone"),
+        ];
+    }
+};
+exports.TaskListUseCase = TaskListUseCase;
+exports.TaskListUseCase = TaskListUseCase = __decorate([
+    (0, inversify_1.injectable)()
+], TaskListUseCase);
 
-@injectable()
-export class UserUseCase {
-  getUsers(): User[] {
-    // Dados simulados para fins de demonstração
-    return [
-      new User(1, "John Doe", "john@example.com"),
-      new User(2, "Jane Smith", "jane@example.com"),
-    ];
-  }
-}
 ```
 
 ##### - Controladores
 
-Crie uma pasta chamada `controllers` e adicione um arquivo `UserController.ts`:
+Crie uma pasta chamada `controllers` e adicione um arquivo `TaskController.ts`:
 
 ```typescript
-import { Request, Response } from "express";
-import { controller, httpGet } from "inversify-express-utils";
-import { UserUseCase } from "../useCases/UserUseCase";
-import { inject } from "inversify";
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TaskController = void 0;
+const inversify_express_utils_1 = require("inversify-express-utils");
+const TaskListUseCase_1 = require("../useCases/TaskListUseCase");
+const inversify_1 = require("inversify");
+let TaskController = class TaskController {
+    constructor(taskListUseCase) {
+        this.taskListUseCase = taskListUseCase;
+    }
+    getUsers(_, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const users = this.taskListUseCase.getTasks();
+            return res.json(users);
+        });
+    }
+};
+exports.TaskController = TaskController;
+__decorate([
+    (0, inversify_express_utils_1.httpGet)("/"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], TaskController.prototype, "getUsers", null);
+exports.TaskController = TaskController = __decorate([
+    (0, inversify_express_utils_1.controller)("/tasks"),
+    __param(0, (0, inversify_1.inject)(TaskListUseCase_1.TaskListUseCase)),
+    __metadata("design:paramtypes", [TaskListUseCase_1.TaskListUseCase])
+], TaskController);
 
-@controller("/users")
-export class UserController {
-  constructor(@inject(UserUseCase) private userUseCase: UserUseCase) {}
-
-  @httpGet("/")
-  async getUsers(_: Request, res: Response) {
-    const users = this.userUseCase.getUsers();
-    return res.json(users);
-  }
-}
 ```
 
 #### Configurando o Contêiner Inversify
@@ -195,19 +247,20 @@ Crie um arquivo chamado `inversify.config.ts`:
 
 ```typescript
 import { Container } from "inversify";
-import { UserController } from "./controllers/UserController";
-import { UserUseCase } from "./useCases/UserUseCase";
+import { TaskController } from "./controllers/TaskController";
+import { TaskListUseCase } from "./useCases/TaskListUseCase";
 
 const container = new Container();
-container.bind<UserController>(UserController).toSelf();
-container.bind<UserUseCase>(UserUseCase).toSelf();
+container.bind<TaskController>(TaskController).toSelf();
+container.bind<TaskListUseCase>(TaskListUseCase).toSelf();
 
 export default container;
+
 ```
 
 #### Configurando o Servidor Express
 
-Crie um arquivo chamado `app.ts`:
+Crie um arquivo chamado `main.ts`:
 
 ```typescript
 import "reflect-metadata";
@@ -232,6 +285,12 @@ node ./dist/app.js
 
 Para acessar o resultado, acesse na url de seu navegador:
 http://localhost:3000/users/
+
+#### Resultado
+
+Deve ser exibida, no localhost, a seguinte lista de tarefas a fazer
+![image](https://github.com/MarcelaCaram/CleanArchitecturecomTypeScripteNode.js-TrabalhoEngenhariadeSoftware/assets/81043748/c6c0a3a7-3c3f-4fe9-9865-fa643fe3e72d)
+
 
 
 
