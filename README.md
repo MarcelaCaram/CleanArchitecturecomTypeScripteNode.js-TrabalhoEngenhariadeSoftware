@@ -231,8 +231,8 @@ server.build().listen(3000, () => {
 
 Para executar o projeto, utilize os seguintes comandos:
 ```shellscript
-npm install typescript ts-node --save-dev
-npm install
+npx tsc
+node ./dist/app.js
 ```
 
 
