@@ -98,6 +98,8 @@ Caso esteja correto, o resultado do comando acima deve ser:
 nome: Vinicius, idade: 20
 ```
 ### Criando um código Clean Architecture com TypeScript e Node.js
+  Como exemplo de aplicação usando Clean Architecture, será criada uma lista de tarefas a fazer (task list).
+
   Primeiramente, vamos criar um novo projeto Node.js e inicializar o npm:
   
 ```bash
@@ -136,8 +138,6 @@ Crie um arquivo `tsconfig.json` na raiz do projeto e adicione as seguintes confi
 ```
 
 ####  Implementando as Camadas da Clean Architecture
-
-Como exemplo de aplicação usando Clean Architecture, será criada uma lista de tarefas a fazer (task list)
 
 #####  - Entidades
 
