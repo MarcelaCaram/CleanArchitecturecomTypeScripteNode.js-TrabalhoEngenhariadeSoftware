@@ -4,7 +4,7 @@
 
 ### Alunos:
 
-- Lara Gama Santos
+- Lara Gama Santos (20213001497)
 - Lucas Santos Rodrigues
 - Marcela Camarano Caram Peito
 - Vinicius Ferreira Pinheiro
