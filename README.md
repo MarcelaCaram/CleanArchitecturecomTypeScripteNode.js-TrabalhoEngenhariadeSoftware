@@ -36,14 +36,7 @@
   Para este tutorial, será necessária a instalação do Node.js e do Typescript.
 
 #### Instalação do Node.js 
-##### - Linux
-```shellscript
-curl -sL https://deb.nodesource.com/setup\_13.x | sudo -E bash -
-```  
-```shellscript
-sudo apt install nodejs
-```
-##### - Windows
+  Realize a instalação do Node.js através do seguinte link: 
 https://nodejs.org/en/download/
 
 #### Verificando a versão instalada
