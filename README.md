@@ -5,9 +5,9 @@
 ### Alunos:
 
 - Lara Gama Santos (20213001497)
-- Lucas Santos Rodrigues
-- Marcela Camarano Caram Peito
-- Vinicius Ferreira Pinheiro
+- Lucas Santos Rodrigues (20213001521)
+- Marcela Camarano Caram Peito (20213006528)
+- Vinicius Ferreira Pinheiro (20213005208)
 
 ## O que é Clean Architecture?
   Clean Architecture é uma arquitetura de software que tem por objetivo padronizar e organizar o código desenvolvido, favorecendo a sua reusabilidade e a independência de tecnologia. Dessa forma, a lógica de negócios é encapsulada e separada do mecanismo de entrega. Entre algumas vantagens da Clean Architecture estão:
