@@ -235,6 +235,11 @@ npx tsc
 node ./dist/app.js
 ```
 
+#### Abrindo o localhost
+
+Para acessar o resultado, acesse na url de seu navegador:
+http://localhost:3000/users/
+
 
 
 
